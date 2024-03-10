@@ -1,0 +1,44 @@
+services:
+
+  foo:
+    # security_opt:
+    #   - seccomp:unconfined
+    build:
+      context: /home/michele/Projects/Universita/Lab_Reti/Resources/udp/client
+      dockerfile: Dockerfile
+      # privileged: true
+      no_cache: true
+    depends_on:
+      - server
+    networks:
+      - backend
+
+  bar:
+    build:
+      context: /home/michele/Projects/Universita/Lab_Reti/Resources/udp/client
+      dockerfile: Dockerfile
+      # privileged: true
+      no_cache: true
+    depends_on:
+      - server
+    networks:
+      - backend
+
+  server:
+    # security_opt:
+    #   - seccomp:unconfined
+    build:
+      context: /home/michele/Projects/Universita/Lab_Reti/Resources/udp/server
+      dockerfile: Dockerfile
+      # privileged: true
+      no_cache: true
+    # cap_add:
+    # - ALL
+    # ports:
+    # - 9999:9999
+    networks:
+      - backend
+
+networks:
+  backend:
+    name: custom_backend
