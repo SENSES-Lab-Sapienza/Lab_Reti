@@ -4,7 +4,7 @@ services:
     # security_opt:
     #   - seccomp:unconfined
     build:
-      context: /home/michele/Projects/Universita/Lab_Reti/Resources/udp/client
+      context: ../udp/client
       dockerfile: Dockerfile
       # privileged: true
       no_cache: true
@@ -15,7 +15,7 @@ services:
 
   bar:
     build:
-      context: /home/michele/Projects/Universita/Lab_Reti/Resources/udp/client
+      context: ../udp/client
       dockerfile: Dockerfile
       # privileged: true
       no_cache: true
@@ -28,7 +28,7 @@ services:
     # security_opt:
     #   - seccomp:unconfined
     build:
-      context: /home/michele/Projects/Universita/Lab_Reti/Resources/udp/server
+      context: ../udp/server
       dockerfile: Dockerfile
       # privileged: true
       no_cache: true
