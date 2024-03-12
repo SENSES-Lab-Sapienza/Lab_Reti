@@ -1,8 +1,8 @@
 import random
 import subprocess
 
-num_nodes = 10
-project_directory = "../udp/client"
+num_nodes = 2
+project_directory = "./src"
 
 # Return a random connected graph n nodes and n-1 edges 
 def get_random_edges(num_nodes):
@@ -38,6 +38,10 @@ def get_yaml(num_nodes, edges):
         buffer += "\t\tbuild:\n"
         buffer += f"\t\t\tcontext: {project_directory}\n"
         buffer += "\t\t\tdockerfile: Dockerfile\n"
+        if node == 0:
+            buffer += "\t\tcommand: ['0', 'leader']\n"
+        else:
+            buffer += f"\t\tcommand: ['{node}']\n"
         buffer += "\t\tnetworks:\n"
         for edge in edges:
             if node in edge:
