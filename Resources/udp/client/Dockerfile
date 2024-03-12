@@ -5,7 +5,7 @@ RUN gcc -o b_client -static b_client.c
 
 FROM alpine:latest as runtime
 COPY --from=builder /usr/src/myapp/b_client /b_client
-CMD ["./b_client"]
+ENTRYPOINT ["./b_client"]
 
 # FROM gcc:4.9 as builder
 
