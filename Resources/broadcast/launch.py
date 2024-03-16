@@ -1,9 +1,10 @@
 import random
 import subprocess
 
-num_nodes = 30
+num_nodes = 10
 project_directory = "./src"
 all_connected = True
+image = None
 
 # Return a random connected graph n nodes and n-1 edges 
 def get_random_edges(num_nodes):
@@ -36,9 +37,13 @@ def get_yaml(num_nodes, edges):
     buffer = "services:\n"
     for node in range(num_nodes):
         buffer += f"\tnode{node}:\n"
-        buffer += "\t\tbuild:\n"
-        buffer += f"\t\t\tcontext: {project_directory}\n"
-        buffer += "\t\t\tdockerfile: Dockerfile\n"
+
+        if image:
+            buffer += f"\t\timage: {image}\n"
+        else:
+            buffer += "\t\tbuild:\n"
+            buffer += f"\t\t\tcontext: {project_directory}\n"
+            buffer += "\t\t\tdockerfile: Dockerfile\n"
 
         params = [f"'{node}'"]
         if all_connected:
