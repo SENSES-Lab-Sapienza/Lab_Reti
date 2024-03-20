@@ -50,14 +50,10 @@ int create_socket(const char * hostname, int port) {
         return -1;
     }
 
-    printf("Connecting\n");
-
     if ((status = connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr))) < 0) {
         perror("connection failed");
         return -1;
     }
-
-    printf("Connected\n");
 
     return sock;
 
@@ -102,6 +98,8 @@ int main(int argc, const char * argv[]) {
     const char * hostname = argv[3];
     int port = atoi(argv[4]);
 
+    printf("Sending file %s to port %d and pipe %s\n", file_name, port, fifo_name);
+
     int sock = create_socket(hostname, port);
     if (sock < 0) {
         perror("error creating the socket");
@@ -127,6 +125,8 @@ int main(int argc, const char * argv[]) {
     while (1) {
         int chunk_size = read(file_to_send, chunk, CHUNK_SIZE);
         if (chunk_size <= 0) {
+            close(sock);
+            close(pipe);
             return 0;
         }
         
