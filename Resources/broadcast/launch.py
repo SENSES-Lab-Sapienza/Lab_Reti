@@ -1,9 +1,9 @@
 import random
 import subprocess
 
-num_nodes = 10
+num_nodes = 25
 project_directory = "./src"
-all_connected = True
+all_connected = False
 image = None
 
 # Return a random connected graph n nodes and n-1 edges 
@@ -46,15 +46,12 @@ def get_yaml(num_nodes, edges):
             buffer += "\t\t\tdockerfile: Dockerfile\n"
 
         params = [f"'{node}'"]
-        if all_connected:
-            for edge in edges:
-                if edge[0] == node:
-                    params.append(f"'{edge[1]}'")
-                if edge[1] == node:
-                    params.append(f"'{edge[0]}'")
-
+        for edge in edges:
+            if edge[0] == node:
+                params.append(f"'{edge[1]}'")
+            if edge[1] == node:
+                params.append(f"'{edge[0]}'")
         params = ", ".join(params)
-
         buffer += f"\t\tcommand: [{params}]\n"
 
         if not all_connected:

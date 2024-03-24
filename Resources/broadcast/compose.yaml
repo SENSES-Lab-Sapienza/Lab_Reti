@@ -1,0 +1,224 @@
+services:
+  node0:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['0', '12', '4', '1', '5']
+    networks:
+    - edge_0_12
+    - edge_0_4
+    - edge_0_1
+    - edge_0_5
+  node1:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['1', '7', '2', '9', '23', '3', '10', '0']
+    networks:
+    - edge_1_7
+    - edge_1_2
+    - edge_1_9
+    - edge_1_23
+    - edge_1_3
+    - edge_1_10
+    - edge_0_1
+  node2:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['2', '20', '1']
+    networks:
+    - edge_2_20
+    - edge_1_2
+  node3:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['3', '16', '24', '21', '18', '15', '6', '1']
+    networks:
+    - edge_3_16
+    - edge_3_24
+    - edge_3_21
+    - edge_3_18
+    - edge_3_15
+    - edge_3_6
+    - edge_1_3
+  node4:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['4', '22', '0']
+    networks:
+    - edge_4_22
+    - edge_0_4
+  node5:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['5', '8', '0']
+    networks:
+    - edge_5_8
+    - edge_0_5
+  node6:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['6', '3']
+    networks:
+    - edge_3_6
+  node7:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['7', '19', '1']
+    networks:
+    - edge_7_19
+    - edge_1_7
+  node8:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['8', '5']
+    networks:
+    - edge_5_8
+  node9:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['9', '1']
+    networks:
+    - edge_1_9
+  node10:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['10', '11', '13', '1']
+    networks:
+    - edge_10_11
+    - edge_10_13
+    - edge_1_10
+  node11:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['11', '17', '14', '10']
+    networks:
+    - edge_11_17
+    - edge_11_14
+    - edge_10_11
+  node12:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['12', '0']
+    networks:
+    - edge_0_12
+  node13:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['13', '10']
+    networks:
+    - edge_10_13
+  node14:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['14', '11']
+    networks:
+    - edge_11_14
+  node15:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['15', '3']
+    networks:
+    - edge_3_15
+  node16:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['16', '3']
+    networks:
+    - edge_3_16
+  node17:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['17', '11']
+    networks:
+    - edge_11_17
+  node18:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['18', '3']
+    networks:
+    - edge_3_18
+  node19:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['19', '7']
+    networks:
+    - edge_7_19
+  node20:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['20', '2']
+    networks:
+    - edge_2_20
+  node21:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['21', '3']
+    networks:
+    - edge_3_21
+  node22:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['22', '4']
+    networks:
+    - edge_4_22
+  node23:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['23', '1']
+    networks:
+    - edge_1_23
+  node24:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    command: ['24', '3']
+    networks:
+    - edge_3_24
+networks:
+  edge_4_22:
+  edge_3_16:
+  edge_7_19:
+  edge_0_12:
+  edge_2_20:
+  edge_3_24:
+  edge_1_7:
+  edge_11_17:
+  edge_1_2:
+  edge_0_4:
+  edge_11_14:
+  edge_3_21:
+  edge_10_11:
+  edge_3_18:
+  edge_1_9:
+  edge_10_13:
+  edge_3_15:
+  edge_1_23:
+  edge_3_6:
+  edge_1_3:
+  edge_5_8:
+  edge_1_10:
+  edge_0_1:
+  edge_0_5:
