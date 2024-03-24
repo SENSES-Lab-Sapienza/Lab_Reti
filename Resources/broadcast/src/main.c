@@ -90,12 +90,12 @@ int bcast(Node *node, int random_value, int sequence)
     freeifaddrs(addrs);
     free(msg);
 
-    // // Listen from all interfaces
-    // int ret = setsockopt(node->socket, SOL_SOCKET, SO_BINDTODEVICE, NULL, NULL);
-    // if (ret < 0)
-    // {
-    //     exit_with_error("recv socket bind interface");
-    // }
+    // Listen from all interfaces
+    int ret = setsockopt(node->socket, SOL_SOCKET, SO_BINDTODEVICE, NULL, NULL);
+    if (ret < 0)
+    {
+        exit_with_error("recv socket bind interface");
+    }
 
     return 0;
 }
@@ -128,16 +128,22 @@ int process_leader(Node *node)
     printf("%d: inizializing Leader...\n", node->id);
 #endif
 
-    msleep(3000);
+    int sequence = 0;
 
-    int random_value = rand() % 100;
-
-    printf("%d: BCAST started: %d\n", node->id, random_value);
-    int res = bcast(node, random_value, 0);
-    if (res < 0)
+    while (1)
     {
-        perror("error sending broadcast");
-        return 1;
+
+        msleep(3000);
+
+        int random_value = rand() % 100;
+
+        printf("%d: BCAST started: %d\n", node->id, random_value);
+        int res = bcast(node, random_value, sequence ++);
+        if (res < 0)
+        {
+            perror("error sending broadcast");
+            return 1;
+        }
     }
 
     return 0;
